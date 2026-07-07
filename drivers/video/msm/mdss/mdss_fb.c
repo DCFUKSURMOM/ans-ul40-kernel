@@ -771,7 +771,7 @@ static int mdss_fb_probe(struct platform_device *pdev)
 	mfd->bl_scale = 1024;
 	mfd->bl_min_lvl = 30;
 	mfd->ad_bl_level = 0;
-	mfd->fb_imgType = MDP_RGBA_8888;
+	mfd->fb_imgType = MDP_RGB_888;
 
 	if (mfd->panel.type == MIPI_VIDEO_PANEL ||
 				mfd->panel.type == MIPI_CMD_PANEL) {
@@ -783,7 +783,7 @@ static int mdss_fb_probe(struct platform_device *pdev)
 			else if (!strcmp(data, "rgb565"))
 				mfd->fb_imgType = MDP_RGB_565;
 			else
-				mfd->fb_imgType = MDP_RGBA_8888;
+				mfd->fb_imgType = MDP_RGB_888;
 		}
 	}
 
@@ -2939,7 +2939,7 @@ static int mdss_fb_set_par(struct fb_info *info)
 		    (var->green.offset == 8) &&
 		    (var->blue.offset == 16) &&
 		    (var->transp.offset == 24))
-			mfd->fb_imgType = MDP_RGBA_8888;
+			mfd->fb_imgType = MDP_RGB_888;
 		else if ((var->red.offset == 16) &&
 		    (var->green.offset == 8) &&
 		    (var->blue.offset == 0) &&
@@ -2951,7 +2951,7 @@ static int mdss_fb_set_par(struct fb_info *info)
 		    (var->transp.offset == 0))
 			mfd->fb_imgType = MDP_ARGB_8888;
 		else
-			mfd->fb_imgType = MDP_RGBA_8888;
+			mfd->fb_imgType = MDP_RGB_888;
 		break;
 
 	default:
